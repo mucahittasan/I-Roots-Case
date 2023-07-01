@@ -20,7 +20,9 @@ const FormFill = () => {
     const forms = useSelector((state: RootState) => state.form.forms);
     const currentForm = forms[Number(formId)]
 
-    const handleClick = () => {
+    const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault();
+
         if (value === "") {
             alert("Formu doldurmadan kaydedemezsiniz!")
         } else {
@@ -50,7 +52,7 @@ const FormFill = () => {
                 )}
             </div>
             <div className="sm:ml-auto flex gap-x-4">
-                <button onClick={() => handleClick()} className="px-4 py-1 bg-gray-800 transition hover:bg-gray-800/80 text-white rounded">Kaydet</button>
+                <button onClick={(e) => handleClick(e)} className="px-4 py-1 bg-gray-800 transition hover:bg-gray-800/80 text-white rounded">Kaydet</button>
                 <Link href="/form-list" className="border-[1px] px-4 py-1 bg-white transition hover:bg-white/80 text-black rounded">Geri</Link>
             </div>
         </form>

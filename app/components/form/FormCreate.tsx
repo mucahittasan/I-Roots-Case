@@ -51,11 +51,13 @@ const FormCreate = () => {
         setFormFields(updatedFields);
     };
 
-    const handleAddField = () => {
+    const handleAddField = (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault();
         setFormFields([...formFields, { label: '', type: '' }]);
     };
 
-    const handleSave = () => {
+    const handleSave = (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault();
         const isFormValid = formFields.every(field => field.label && field.type);
 
         if (isFormValid) {
@@ -116,10 +118,10 @@ const FormCreate = () => {
             ))}
             <div className='flex flex-col justify-start items-start w-full'>
                 <div className='mb-4 pb-6 border-b-2 border-gray-300 w-full'>
-                    <button onClick={handleAddField} className="active:scale-95 w-32 py-2.5 border-gray-600 border-2 rounded-[3px] bg-[#3D8AF7] transition hover:bg-[#3D8AF7]/90 text-xs text-white font-medium">ALAN EKLE</button>
+                    <button onClick={(e) => handleAddField(e)} className="active:scale-95 w-32 py-2.5 border-gray-600 border-2 rounded-[3px] bg-[#3D8AF7] transition hover:bg-[#3D8AF7]/90 text-xs text-white font-medium">ALAN EKLE</button>
                 </div>
                 <div className='mt-12 pb-8 w-full text-end'>
-                    <button onClick={handleSave} className='active:scale-95 w-32 py-2.5 text-white text-xs font-medium rounded-[3px] bg-[#29323D] transition hover:bg-[#29323D]/90'>KAYDET</button>
+                    <button onClick={(e) => handleSave(e)} className='active:scale-95 w-32 py-2.5 text-white text-xs font-medium rounded-[3px] bg-[#29323D] transition hover:bg-[#29323D]/90'>KAYDET</button>
                 </div>
             </div>
         </form>

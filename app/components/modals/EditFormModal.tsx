@@ -32,7 +32,9 @@ const EditForm = () => {
     };
 
     const handleSubmit = () => {
-        if (type !== "" && label !== "" && options.length !== 0) {
+        if (type === "" && label === "" && options.length === 0) {
+            editFormModal.onClose()
+        } else {
             const updateForm = {
                 ...currentForm,
                 type,
@@ -40,8 +42,6 @@ const EditForm = () => {
                 options: options.length > 0 ? options : []
             }
             dispatch(updateFormById({ formId: editFormModal.formIndex, form: updateForm }));
-            editFormModal.onClose()
-        } else {
             editFormModal.onClose()
         }
     }
