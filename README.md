@@ -12,7 +12,7 @@
 
 Projede istemiş olduğunuz gibi bizi ilk önce bir **Form Create** sayfası karşılıyor ve bu sayfada formlar oluşturabiliyoruz. Bu oluşturdugumuz formları **forms** isminde bir değişkende **Redux Toolkit** kullanarak global olarak tutuyoruz. Oluşturduğumuz formları kaydettikten sonra bu formları **/form-list** sayfasında görebiliriz. Bu sayfada görüntülenen formları **Doldurabilir**, **Editleyebilir** ve **Silebiliriz**.
 
-<h5>Localde çalıştırma</h5>
+<h4>Localde çalıştırma</h4>
 
 - İlk önce projeyi **clone**'layarak veya **zip** dosyası olarak kendi bilgisayarınıza indirmelisiniz.
 
