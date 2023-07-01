@@ -20,7 +20,7 @@ Projede istemiş olduğunuz gibi bizi ilk önce bir **Form Create** sayfası kar
 
 - Daha sonra terminale **npm run dev** komutunu yazıp projeyi ayağa kaldırmış olacaksınız. 
 
-- Tarayıcınızda **http://localhost:3000** adresine gidip projeyi localde çalıştırıp görmüş olacaksınız.
+- Tarayıcınızda **http://localhost:3000** adresine gidip projeyi localde çalışır halde görmüş olacaksınız.
 
 
 <h2>Kullanılan Teknolojiler</h2>
