@@ -32,14 +32,18 @@ const EditForm = () => {
     };
 
     const handleSubmit = () => {
-        const updateForm = {
-            ...currentForm,
-            type,
-            label,
-            options: options.length > 0 ? options : []
+        if (type !== "" && label !== "" && options.length !== 0) {
+            const updateForm = {
+                ...currentForm,
+                type,
+                label,
+                options: options.length > 0 ? options : []
+            }
+            dispatch(updateFormById({ formId: editFormModal.formIndex, form: updateForm }));
+            editFormModal.onClose()
+        } else {
+            editFormModal.onClose()
         }
-        dispatch(updateFormById({ formId: editFormModal.formIndex, form: updateForm }));
-        editFormModal.onClose()
     }
 
     let bodyContent = (
