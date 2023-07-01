@@ -43,11 +43,10 @@ const EditForm = () => {
     }
 
     let bodyContent = (
-        <div
-            className={`mb-4 grid ${selectedValue === "select"
-                ? "grid-cols-3"
-                : "grid-cols-2"
-                } items-center gap-x-4 pb-6`}>
+        <div className={`mb-4 grid grid-cols-1 ${selectedValue === "select"
+            ? "md:grid-cols-3"
+            : "md:grid-cols-2"
+            }  items-center gap-x-4 pb-6 `}>
 
             <label className='flex flex-col mb-2'>
                 <span className='text-sm font-medium'>Etiket</span>
