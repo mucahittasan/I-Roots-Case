@@ -68,15 +68,15 @@ const FormCreate = () => {
 
 
     return (
-        <div className=''>
+        <div>
             <h2 className='main-title'>Form Ekle</h2>
             {formFields.map((field, index) => (
                 <div
                     key={index}
                     className={`mb-4 grid ${selectedValue.find(item => item.value === "select" && item.index === index)
-                        ? "grid-cols-3"
-                        : "grid-cols-2"
-                        } items-center gap-x-4 border-b-2 border-gray-300 pb-6`}>
+                        ? "sm:grid-cols-3"
+                        : "sm:grid-cols-2"
+                        } grid-cols-1 gap-y-4 items-center gap-x-4 border-b-2 border-gray-300 pb-6`}>
 
                     <label className='flex flex-col mb-2'>
                         <span className='text-sm font-medium'>Etiket</span>

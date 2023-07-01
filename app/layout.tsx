@@ -1,4 +1,5 @@
 import Header from './components/Header'
+import EditForm from './components/modals/EditFormModal'
 import './globals.css'
 import { Providers } from './redux/provider'
 
@@ -18,6 +19,7 @@ export default function RootLayout({
       <body className='content'>
         <Providers>
           <Header />
+          <EditForm />
           <div className='max-w-2xl bg-[#EFF0F4] p-2 px-8 rounded-sm mx-auto mt-12'>
             {children}
           </div>
