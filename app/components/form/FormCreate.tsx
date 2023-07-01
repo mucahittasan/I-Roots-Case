@@ -68,7 +68,7 @@ const FormCreate = () => {
 
 
     return (
-        <div>
+        <form>
             <h2 className='main-title'>Form Ekle</h2>
             {formFields.map((field, index) => (
                 <div
@@ -122,7 +122,7 @@ const FormCreate = () => {
                     <button onClick={handleSave} className='active:scale-95 w-32 py-2.5 text-white text-xs font-medium rounded-[3px] bg-[#29323D] transition hover:bg-[#29323D]/90'>KAYDET</button>
                 </div>
             </div>
-        </div>
+        </form>
     )
 }
 
