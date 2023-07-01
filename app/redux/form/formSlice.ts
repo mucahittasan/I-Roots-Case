@@ -25,9 +25,15 @@ export const formSlice = createSlice({
         },
         fillCurrentForm: (state, action) => {
             state.forms[action.payload.formId].value = action.payload.value;
+        },
+        deleteFormById: (state, action) => {
+            const item = state.forms[action.payload];
+
+            const newForms = state.forms.filter((form) => form.label !== item.label);
+            state.forms = newForms;
         }
     }
 })
 
-export const { addToForm, fillCurrentForm } = formSlice.actions
+export const { addToForm, fillCurrentForm, deleteFormById } = formSlice.actions
 export default formSlice.reducer;

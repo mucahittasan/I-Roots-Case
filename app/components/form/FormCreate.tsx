@@ -96,9 +96,9 @@ const FormCreate = () => {
                             className="border-2 text-gray-400 placeholder:text-gray-400 border-gray-300 rounded-sm py-1 px-3"
                         >
                             <option disabled value="">Giriş Tipi Seçiniz</option>
-                            <option value="text">text</option>
-                            <option value="number">number</option>
-                            <option value="select">select</option>
+                            <option className='text-gray-800' value="text">text</option>
+                            <option className='text-gray-800' value="number">number</option>
+                            <option className='text-gray-800' value="select">select</option>
                         </select>
                     </label>
                     {selectedValue.find(item => item.value === "select" && item.index === index) && (
@@ -116,10 +116,10 @@ const FormCreate = () => {
             ))}
             <div className='flex flex-col justify-start items-start w-full'>
                 <div className='mb-4 pb-6 border-b-2 border-gray-300 w-full'>
-                    <button onClick={handleAddField} className="w-32 py-2.5 border-gray-600 border-2 rounded-[3px] bg-[#3D8AF7] transition hover:bg-[#3D8AF7]/90 text-xs text-white font-medium">ALAN EKLE</button>
+                    <button onClick={handleAddField} className="active:scale-95 w-32 py-2.5 border-gray-600 border-2 rounded-[3px] bg-[#3D8AF7] transition hover:bg-[#3D8AF7]/90 text-xs text-white font-medium">ALAN EKLE</button>
                 </div>
                 <div className='mt-12 pb-8 w-full text-end'>
-                    <button onClick={handleSave} className='w-32 py-2.5 text-white text-xs font-medium rounded-[3px] bg-[#29323D] transition hover:bg-[#29323D]/90'>KAYDET</button>
+                    <button onClick={handleSave} className='active:scale-95 w-32 py-2.5 text-white text-xs font-medium rounded-[3px] bg-[#29323D] transition hover:bg-[#29323D]/90'>KAYDET</button>
                 </div>
             </div>
         </div>
