@@ -21,11 +21,6 @@ const Header = () => {
                             Form List
                         </Link>
                     </li>
-                    <li>
-                        <Link className='font-medium p-2 px-6 text-sm rounded-md bg-primaryColor transition hover:bg-primaryColor/90 text-white' href="/form-fill">
-                            Form Fill
-                        </Link>
-                    </li>
                 </ul>
             </nav>
         </header>

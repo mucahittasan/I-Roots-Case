@@ -1,16 +1,14 @@
 "use client"
 
-import { useDispatch, useSelector } from 'react-redux'
-import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux'
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { AppDispatch, RootState } from '../redux/store';
-import { addToForm } from '../redux/form/formSlice';
+import { AppDispatch } from '../../redux/store';
+import { FormFields, addToForm } from '../../redux/form/formSlice';
 
-type formFiledsType = {
-    label: string,
-    type: string,
-    options?: string[],
-    value?: string
+type SelectedValueType = {
+    value: string;
+    index?: number
 }
 
 const FormCreate = () => {
@@ -18,8 +16,8 @@ const FormCreate = () => {
     const router = useRouter();
     const dispatch = useDispatch<AppDispatch>()
 
-    const [formFields, setFormFields] = useState<formFiledsType[]>([{ label: '', type: '' }]);
-    const [selectedValue, setSelectedValue] = useState("");
+    const [formFields, setFormFields] = useState<FormFields[]>([{ label: '', type: '' }]);
+    const [selectedValue, setSelectedValue] = useState<SelectedValueType[]>([]);
 
 
     const handleLabelChange = (index: number, event: React.ChangeEvent<HTMLInputElement>) => {
@@ -30,15 +28,18 @@ const FormCreate = () => {
 
     const handleTypeChange = (index: number, event: React.ChangeEvent<HTMLSelectElement>) => {
         const fieldType = event.target.value;
-        setSelectedValue(fieldType);
-
         const updatedFields = [...formFields];
-        updatedFields[index].type = fieldType;
+        updatedFields[index] = { ...updatedFields[index], type: fieldType };
 
         if (fieldType === "select") {
             updatedFields[index].options = [];
+            setSelectedValue(prevState => [
+                ...prevState.filter(item => item.index !== index),
+                { value: fieldType, index: index }
+            ]);
         } else {
             updatedFields[index].options = undefined;
+            setSelectedValue(prevState => prevState.filter(item => item.index !== index));
         }
 
         setFormFields(updatedFields);
@@ -54,22 +55,29 @@ const FormCreate = () => {
         setFormFields([...formFields, { label: '', type: '' }]);
     };
 
-    const handleSave = async () => {
-        await dispatch(addToForm(formFields))
-        // router.push('/form-list');
+    const handleSave = () => {
+        const isFormValid = formFields.every(field => field.label && field.type);
+
+        if (isFormValid) {
+            dispatch(addToForm(formFields));
+            router.push('/form-list');
+        } else {
+            alert('Please fill in all label and type fields');
+        }
     };
 
-    const forms = useSelector((state: RootState) => state.form.forms)
-
-    useEffect(() => {
-        console.log(forms)
-    }, [forms])
 
     return (
         <div className=''>
-            <h2 className='text-3xl font-bold text-[#3B4754] mb-8 mt-2'>Form Ekle</h2>
+            <h2 className='main-title'>Form Ekle</h2>
             {formFields.map((field, index) => (
-                <div key={index} className={`mb-4 grid ${selectedValue === "select" ? "grid-cols-3" : "grid-cols-2"} items-center gap-x-4 border-b-2 border-gray-300 pb-6`}>
+                <div
+                    key={index}
+                    className={`mb-4 grid ${selectedValue.find(item => item.value === "select" && item.index === index)
+                        ? "grid-cols-3"
+                        : "grid-cols-2"
+                        } items-center gap-x-4 border-b-2 border-gray-300 pb-6`}>
+
                     <label className='flex flex-col mb-2'>
                         <span className='text-sm font-medium'>Etiket</span>
                         <input
@@ -93,7 +101,7 @@ const FormCreate = () => {
                             <option value="select">select</option>
                         </select>
                     </label>
-                    {selectedValue === "select" && (
+                    {selectedValue.find(item => item.value === "select" && item.index === index) && (
                         <label className='flex flex-col mb-2'>
                             <span className='text-sm font-medium'>Opsiyonlar</span>
                             <input

@@ -6,4 +6,8 @@
     .content {
         @apply w-full max-w-7xl mx-auto
     }
+
+    .main-title {
+        @apply text-3xl font-bold text-[#3B4754] mb-8 mt-2
+    }
 }

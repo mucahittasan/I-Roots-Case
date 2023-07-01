@@ -22,9 +22,12 @@ export const formSlice = createSlice({
     reducers: {
         addToForm: (state, action) => {
             state.forms.push(...action.payload);
+        },
+        fillCurrentForm: (state, action) => {
+            state.forms[action.payload.formId].value = action.payload.value;
         }
     }
 })
 
-export const { addToForm } = formSlice.actions
+export const { addToForm, fillCurrentForm } = formSlice.actions
 export default formSlice.reducer;
